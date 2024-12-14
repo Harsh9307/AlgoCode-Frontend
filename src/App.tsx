@@ -14,7 +14,6 @@ function App() {
     <div className='h-[100vh] overflow-hidden'>
       <Navbar />
       <SideBar />
-    
       <Routes>
         <Route path='/problems/list' element={<QuestionsList />} />
         <Route path='/problems/:id' element={ <ProblemDescription descriptionText={markdownText} />} />

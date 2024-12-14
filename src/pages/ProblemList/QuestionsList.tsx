@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Import Link for navigation
+import './QuestionsList.css'
 
 // Define the type of each question
 interface Question {
@@ -24,16 +25,18 @@ const QuestionsList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Questions List</h2>
-      <ul>
+    <div className="container">
+      <h2 className="header">Questions List</h2>
+      <ul className="questions-list">
         {questions.map((question) => (
-          <li key={question._id}>
-            <Link to={`/problems/${question._id}`}>
+          <li key={question._id} className="question-item">
+            <Link to={`/problems/${question._id}`} className="question-link">
               {question.title}
-            </Link> 
-            - Difficulty: {question.difficulty}
-          </li>   
+            </Link>
+            <span className={`difficulty ${question.difficulty.toLowerCase()}`}>
+              {question.difficulty}
+            </span>
+          </li>
         ))}
       </ul>
     </div>
